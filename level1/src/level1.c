@@ -1,4 +1,4 @@
-#include <pthread.h>
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <signal.h>
@@ -91,8 +91,8 @@ static int prepare_index(git_index *index, char* msg){
 
     // Write the coin
     // TODO: Use C for this?
-    system("perl -i -pe 's/(user-nivak8lr: )(\\d+)/$1 . ($2+1)/e' LEDGER.txt");
-    system("grep -q \"user-nivak8lr\" LEDGER.txt || echo \"user-nivak8lr: 1\" >> LEDGER.txt");
+    system("perl -i -pe 's/(null:)(\\d+)/$1 . ($2+1)/e' LEDGER.txt");
+    system("grep -q \"null\" LEDGER.txt || echo \"null:1\" >> LEDGER.txt");
 
     // Update the index
     check_lg2(git_index_read(index, 0),
@@ -109,10 +109,10 @@ static int prepare_index(git_index *index, char* msg){
              "commit %d%c"
              "tree %s\n"
              "parent %s\n"
-             "author Andrew Metcalf <andrew@stripe.com> %d +0000\n"
-             "committer Andrew Metcalf <andrew@stripe.com> %d +0000\n"
+             "author null           <nulles@bytess.com> %d +0000\n"
+             "committer null           <nulles@bytess.com> %d +0000\n"
              "\n"
-             "Brute it!"
+             "coins now"
              "\x01\x01\x01\x01"
              "\x01\x01\x01\x01"
              "\x01\x01\x01", // Align 32 bit words on GPU

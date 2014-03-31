@@ -19,6 +19,7 @@ int main(int argc, char **argv){
     int i, j;
     char unused_stop = 0;
     int iters = 10;
+    iters = 5;
     hash_args args;
     char msg[BUFFER_LENGTH];
     unsigned char hash[SHA_DIGEST_LENGTH];
